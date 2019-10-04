@@ -1,0 +1,112 @@
+LessonsData={
+
+"lesson828":{
+theory:``,
+html:``,
+css:``,
+hidden:``,
+js:``,
+tasks:[
+  {message:"",
+  check:null},
+],blocked:"3",editorOff:"3"},
+
+"lesson829":{
+theory:``,
+html:``,
+css:``,
+hidden:``,
+js:``,
+tasks:[
+  {message:"",
+  check:null},
+],blocked:"3",editorOff:"3"},
+
+"lesson830":{
+theory:``,
+html:``,
+css:``,
+hidden:``,
+js:``,
+tasks:[
+  {message:"",
+  check:null},
+],blocked:"3",editorOff:"3"},
+
+"lesson831":{
+theory:``,
+html:``,
+css:``,
+hidden:``,
+js:``,
+tasks:[
+  {message:"",
+  check:null},
+],blocked:"3",editorOff:"3"},
+
+"lesson832":{
+theory:``,
+html:``,
+css:``,
+hidden:``,
+js:``,
+tasks:[
+  {message:"",
+  check:null},
+],blocked:"3",editorOff:"3"},
+
+"lesson833":{
+theory:``,
+html:``,
+css:``,
+hidden:``,
+js:``,
+tasks:[
+  {message:"",
+  check:null},
+],blocked:"3",editorOff:"3"},
+
+"lesson834":{
+theory:``,
+html:``,
+css:``,
+hidden:``,
+js:``,
+tasks:[
+  {message:"",
+  check:null},
+],blocked:"3",editorOff:"3"},
+
+"lesson835":{
+theory:``,
+html:``,
+css:``,
+hidden:``,
+js:``,
+tasks:[
+  {message:"",
+  check:null},
+],blocked:"3",editorOff:"3"},
+
+"lesson836":{
+theory:``,
+html:``,
+css:``,
+hidden:``,
+js:``,
+tasks:[
+  {message:"",
+  check:null},
+],blocked:"3",editorOff:"3"},
+
+"lesson837":{
+theory:``,
+html:``,
+css:``,
+hidden:``,
+js:``,
+tasks:[
+  {message:"",
+  check:null},
+],blocked:"3",editorOff:"3"},
+};

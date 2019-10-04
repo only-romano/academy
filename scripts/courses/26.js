@@ -1,0 +1,189 @@
+LessonsData={
+
+"lesson522":{
+theory:``,
+html:``,
+css:``,
+hidden:``,
+js:``,
+tasks:[
+  {message:"",
+  check:null},
+],blocked:"3",editorOff:"3"},
+
+"lesson523":{
+theory:``,
+html:``,
+css:``,
+hidden:``,
+js:``,
+tasks:[
+  {message:"",
+  check:null},
+],blocked:"3",editorOff:"3"},
+
+"lesson524":{
+theory:``,
+html:``,
+css:``,
+hidden:``,
+js:``,
+tasks:[
+  {message:"",
+  check:null},
+],blocked:"3",editorOff:"3"},
+
+"lesson525":{
+theory:``,
+html:``,
+css:``,
+hidden:``,
+js:``,
+tasks:[
+  {message:"",
+  check:null},
+],blocked:"3",editorOff:"3"},
+
+"lesson526":{
+theory:``,
+html:``,
+css:``,
+hidden:``,
+js:``,
+tasks:[
+  {message:"",
+  check:null},
+],blocked:"3",editorOff:"3"},
+
+"lesson527":{
+theory:``,
+html:``,
+css:``,
+hidden:``,
+js:``,
+tasks:[
+  {message:"",
+  check:null},
+],blocked:"3",editorOff:"3"},
+
+"lesson528":{
+theory:``,
+html:``,
+css:``,
+hidden:``,
+js:``,
+tasks:[
+  {message:"",
+  check:null},
+],blocked:"3",editorOff:"3"},
+
+"lesson529":{
+theory:``,
+html:``,
+css:``,
+hidden:``,
+js:``,
+tasks:[
+  {message:"",
+  check:null},
+],blocked:"3",editorOff:"3"},
+
+"lesson530":{
+theory:``,
+html:``,
+css:``,
+hidden:``,
+js:``,
+tasks:[
+  {message:"",
+  check:null},
+],blocked:"3",editorOff:"3"},
+
+"lesson531":{
+theory:``,
+html:``,
+css:``,
+hidden:``,
+js:``,
+tasks:[
+  {message:"",
+  check:null},
+],blocked:"3",editorOff:"3"},
+
+"lesson532":{
+theory:``,
+html:``,
+css:``,
+hidden:``,
+js:``,
+tasks:[
+  {message:"",
+  check:null},
+],blocked:"3",editorOff:"3"},
+
+"lesson533":{
+theory:``,
+html:``,
+css:``,
+hidden:``,
+js:``,
+tasks:[
+  {message:"",
+  check:null},
+],blocked:"3",editorOff:"3"},
+
+"lesson534":{
+theory:``,
+html:``,
+css:``,
+hidden:``,
+js:``,
+tasks:[
+  {message:"",
+  check:null},
+],blocked:"3",editorOff:"3"},
+
+"lesson535":{
+theory:``,
+html:``,
+css:``,
+hidden:``,
+js:``,
+tasks:[
+  {message:"",
+  check:null},
+],blocked:"3",editorOff:"3"},
+
+"lesson536":{
+theory:``,
+html:``,
+css:``,
+hidden:``,
+js:``,
+tasks:[
+  {message:"",
+  check:null},
+],blocked:"3",editorOff:"3"},
+
+"lesson537":{
+theory:``,
+html:``,
+css:``,
+hidden:``,
+js:``,
+tasks:[
+  {message:"",
+  check:null},
+],blocked:"3",editorOff:"3"},
+
+"lesson538":{
+theory:``,
+html:``,
+css:``,
+hidden:``,
+js:``,
+tasks:[
+  {message:"",
+  check:null},
+],blocked:"3",editorOff:"3"},
+};

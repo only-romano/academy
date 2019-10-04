@@ -1,0 +1,1356 @@
+/*
+    Базовые стили.
+*/
+
+html,
+body {
+    height: 100%; /*
+        Высота страницы/приложения.
+
+        100% не должны тебя обманывать; если у сайта предполагается содержимое,
+        которое вылезает за 100% (будет скролл - прокрутка страницы), то при
+        прокрутке это содержимое выпадет за пределы <body> - то есть у этого
+        содержимого не будет, к примеру, фона, заданного для body, нижнего
+        padding-а и т.д.
+
+        Здесь используется height: 100%, так как в приложении есть абсолютно
+        спозиционированные элементы, размер и положение которых зависит от
+        body. А само приложение не превышает эти 100%, оно состоит из меню,
+        высота которого 100%; окно урока - это абсолютно спозиционированный div
+        с заданными top\right\bottom\left = 0. То есть урок занимает ровно 100%
+        высоты браузера. Для внутренних элементов урока задан overflow: auto.
+        Это значит, что всё, выходящее за их пределы не изменит высоту всего
+        приложения, а просто вызовет появление полосы прокрутки внутри этих
+        элементов. При этом они не выйдут за пределы body - они как занимали
+        фиксированную высоту, так и продолжат её занимать.
+
+        Если же ты не знаешь, будет ли содержимое твоего сайта превышать 100%,
+        или же, возможно, наоборот - не будет дотягивать до 100% (при этом без
+        заданной высоты - если задан фон для body - снизу появится белая полоса
+        высотой как раз в "недобор" до 100% высоты содержимого; также футер не
+        будет прижат к низу странички) - то стоит использовать вместо height
+        min-height: 100%;
+
+        При обнулении margin-ов это даст нужный эффект "занимания всей высоты"
+        страничкой даже при недоборе содержимым высоты. А при переборе ничего
+        не выпадет из body, так как без фиксированной высоты (min-height - это
+        не фиксированная, а минимальная высота, выше этого значения высота может
+        быть любой) - body будет растягиваться вместе со своим содержимым.
+        */
+
+    width: 100%;
+    margin: 0;
+    background-color: lavender;
+    overflow-x: hidden;
+}
+
+/* Скроллбар */
+::-webkit-scrollbar { width: 2vh; }
+
+::-webkit-scrollbar-track {
+    background: rgba(128, 128, 128, .05);
+    -webkit-box-shadow: inset 0 0 6px rgba(128, 128, 128, .4);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(155, 155, 155, .7);
+}
+
+/* Универсальный выключатель */
+.off { display: none; }
+
+/* Стартовая открытка */
+#start-app p {
+    margin-top: 25vh;
+    text-align: center;
+    font-family: 'Pacifico';
+    font-weight: 200;
+    font-size: 5vh;
+    letter-spacing: 0.5vh;
+    color: rgba(128, 128, 192, .85);
+    text-shadow: -1px 1px 5px rgba(50, 192, 30, .5),
+                 1px -1px 5px rgba(192, 30, 50, .5);
+    opacity: .33;
+}
+
+
+/*
+    Шрифты
+*/
+
+@font-face {
+    font-family: 'Pacifico';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Pacifico'), url('fonts/pacifico.woff2') format('woff2');
+    unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+
+@font-face {
+    font-family: 'VT323';
+    font-style: normal;
+    font-weight: 400;
+    src: local('VT323'), url('fonts/VT323.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
+        U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193,
+        U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "PT Sans";
+  font-style: normal;
+  font-weight: 700;
+  src: local("PT Sans"), url("fonts/ptsansbold.woff2") format("woff2"),
+       url("fonts/ptsansbold.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Roboto"), url("fonts/roboto.woff2") format("woff2"),
+       url("fonts/roboto.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 700;
+  src: local("Roboto"), url("fonts/robotobold.woff2") format("woff2"),
+       url("fonts/robotobold.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Muller";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Muller"), url("fonts/2DF5B4_F_0.woff2") format("woff2"),
+       url("fonts/2DF5B4_2_02DF5B4_F_0.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Muller";
+  font-style: normal;
+  font-weight: 700;
+  src: local("Muller"), url("fonts/2DF5B4_2_0.woff2") format("woff2"),
+       url("fonts/2DF5B4_2_0.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Gilroy";
+  font-style: normal;
+  font-weight: 500;
+  src: local("Gilroy"), url("fonts/gilroyextrabold.woff") format("woff"),
+       url("fonts/gilroyextrabold.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Gilroy";
+  font-style: normal;
+  font-weight: 300;
+  src: local("Gilroy"), url("fonts/gilroylight.woff") format("woff"),
+       url("fonts/gilroylight.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 400;
+  src: url("fonts/OpenSans-Regular.woff") format("woff"),
+       url("fonts/OpenSans-Regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 700;
+  src: url("fonts/OpenSans-Bold.woff") format("woff"),
+       url("fonts/OpenSans-Bold.woff2") format("woff2");
+}
+
+
+/*
+    Меню.
+
+    Каждый уровень меню (меню каждого раздела, курса - это отдельный div,
+    который существует на странице только при выполнении условий его появления.
+    внутри которого кнопки button.
+    В каждую кнопку вложено изображение img.
+*/
+
+#menu-app { user-select: none; }
+
+/* Базовые стили для кнопок всех уровней меню */
+[class*="menu-level-"] button {
+    border: none;
+    background: lavender no-repeat;
+    text-align: left;
+    font-family: Gilroy, monospace;
+    font-weight: 300;
+    line-height: 12vh;
+    font-size: 3.5vh;
+    cursor: pointer;
+    outline: none;
+}
+[class*="menu-level-"] button:hover  { background-color: rgb(210, 210, 255); }
+[class*="menu-level-"] button:active { background-color: rgb(192, 255, 192); }
+
+/* Изображения в кнопках и анимация к ним */
+[class*="menu-level-"] button img {
+    float: left;
+    max-height: 8vh;
+    margin: 1vh;
+}
+[class*="menu-level-"] button:hover img {
+    animation: tendent 1.5s infinite;
+    transition: .5s;
+}
+
+@keyframes tendent {
+    0%   { transform: scale(1); }
+    50%  { transform: scale(1.15) skewX(-5deg); }
+    100% { transform: scale(1); }
+}
+
+/* Поправки для кнопок меню 1 уровня (выбор JS/HTML+CSS) */
+.menu-level-1 { opacity: 0; }
+
+*[class*="menu-level-"],
+.menu-level-1 > button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transition: .25s;
+}
+
+.menu-level-1 > button {
+    width: 50%;
+    background-position: 50%;
+    background-size: 100%;
+}
+.menu-level-1 button:hover { background-size: 95%; }
+
+.menu-level-1 > button:first-of-type {
+    border-right: 2px solid rgba(190, 190, 200, .75);
+    background-image: url('../images/html5.png');
+}
+
+.menu-level-1 > button:last-of-type {
+    left: 50%;
+    background-image: url('../images/js.png');
+}
+
+/* Поправки для кнопок меню 2 уровня и изображений в них (выбор раздела) */
+[class*="menu-level-2"] > button:not(:first-of-type) { width: 50%; }
+
+[class*="menu-level-2"] > button:not(:first-of-type):nth-of-type(2n+1) {
+    position: absolute;
+    left: 50%;
+}
+
+.menu-level-2-html > button:not(:first-of-type) {
+    height: 18vh;
+}
+
+.menu-level-2-js > button:not(:first-of-type) {
+    position: absolute;
+    top: 10vh;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+[class*=menu-level-2] > button img {
+    max-height: 9vh;
+}
+
+
+/* Поправки для кнопок меню 3-4 уровня и изображений в них - меню выбора курса и меню выбора уроков */
+
+[class*="menu-level-"]:not(.menu-level-1) > button:first-of-type,
+[class*=menu-level-]:not(.menu-level-1):not([class*=menu-level-2]) > button:nth-of-type(2),
+[class*=menu-level-4] > button:nth-of-type(3) {
+    height: 10vh;
+    width: 100%;
+    background-color: rgb(240, 230, 250);
+    text-align: right;
+}
+
+[class*="menu-level-"]:not(.menu-level-1) > button:first-of-type:hover,
+[class*=menu-level-]:not(.menu-level-1):not([class*=menu-level-2]) > button:nth-of-type(2):hover,
+[class*=menu-level-4] > button:nth-of-type(3):hover {
+    background-color: rgb(240, 210, 210);
+}
+
+[class*="menu-level-"]:not(.menu-level-1) > button:first-of-type:active,
+[class*=menu-level-]:not(.menu-level-1):not([class*=menu-level-2]) > button:nth-of-type(2):active,
+[class*=menu-level-4] > button:nth-of-type(3):active {
+    background-color: rgb(192, 255, 192);
+}
+
+[class*="menu-level-"]:not(.menu-level-1) > button:first-of-type img,
+[class*=menu-level-]:not(.menu-level-1):not([class*=menu-level-2]) > button:nth-of-type(2) img,
+[class*=menu-level-4] > button:nth-of-type(3) img {
+    float: right;
+    max-height: 8vh;
+    margin: 1vh 1vh 1vh 5vh;
+}
+
+[class*=menu-level-3] > button,
+[class*=menu-level-4] > button {
+    height: 10vh;
+    width: 100%;
+    line-height: 11vh;
+}
+
+[class*=menu-level-4] > button {
+    line-height: 10vh;
+}
+
+[class*=menu-level-4] > button img {
+    max-height: 5vh;
+    margin: 2.5vh;
+}
+
+
+/* Стили для завершённых уроков */
+
+[class*=menu-level-4] > button.button-passed {
+    position: relative;
+    box-shadow: inset 0 0 200px rgba(124, 252, 0, .30);
+}
+
+[class*=menu-level-4] > button.button-passed:hover {
+    background: rgba(25, 255, 0, .25);
+    box-shadow: inset 0 0 200px rgba(120, 250, 0, .25);
+}
+
+[class*=menu-level-4] > button.button-passed:active {
+    background: rgba(0, 255, 0, .33);
+    box-shadow: inset 0 0 200px rgba(70, 250, 0, .25);
+}
+
+[class*=menu-level-4] > button.button-passed::before {
+    content: "✓";
+    position: absolute;
+    top: .5vh;
+    right: 5vh;
+    font-size: 5vh;
+    color: lawngreen;
+}
+
+[class*=menu-level-4] > button.button-passed:hover::before {
+    color: rgba(230, 230, 250);
+}
+
+
+/* Выделение важных слов в меню */
+
+[class*="marked-"] {
+    font-family: "Roboto", monospace;
+    font-weight: normal;
+    color: crimson;
+    text-shadow: 0 0 1px black;
+}
+
+.marked-css {
+    color: dodgerblue;
+}
+
+.marked-class {
+    color: forestgreen;
+}
+
+.marked-name {
+    font-style: normal;
+    color: indigo;
+}
+
+.marked-js {
+    color: steelblue;
+}
+
+
+/* Название главы\курса в меню */
+
+div.what-is-now {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 35vw;
+    max-width: 45vw;
+    min-height: calc(20vh - 40px);
+    max-height: calc(20vh - 40px);
+    font-family: "Pacifico", "Open Sans", "Consolas", "Courier New", cursive;
+    background: rgba(255, 255, 255, .5) linear-gradient(to left top, rgba(0, 0, 255, .1), rgba(192, 0, 0, .1) );
+    font-size: 5vh;
+    color: steelblue;
+    text-shadow: 0 0 1px black;
+    padding: 20px;
+    border: 2px solid rgba(192, 192, 192, .2);
+    border-radius: 0 0 15px 0;
+    box-sizing: content-box;
+    transition: background-color 1.5s, color 1.25s;
+}
+
+div.what-is-now:hover {
+    background-color: rgba(164, 164, 164, .3);
+    color: lavender;
+}
+
+div.what-is-now.html {
+    color: indigo;
+}
+
+div.what-is-now.html:hover {
+    color: ivory;
+}
+
+
+/*
+    Стили движка урока.
+*/
+
+#lesson-engine {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    background: lavender;
+    overflow: hidden;
+}
+
+#view-before,
+#view-after,
+#lesson-editor {
+    background: white;
+    user-select: text;
+}
+
+
+/* Стили окон отображения кода, эмуляция отдельного документа до и после редактирования пользователем */
+
+#view-before .view-body,
+#view-after .view-body,
+#lesson-console {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 95%;
+    width: calc(100% - 3vh);
+    padding: 10px;
+    overflow: auto;
+    z-index: 1;
+}
+
+#view-before,
+#view-after {
+    position: absolute;
+    height: 50vh;
+    width: 50%;
+    margin: 0;
+    padding: 0;
+    border-bottom: 2px solid rgba(190, 190, 200, .75);
+}
+
+#view-after {
+    top: 0;
+    left: 50%;
+    border-left: 2px solid rgba(190, 190, 200, .75);
+}
+
+#view-title {
+    position: absolute;
+    top: 1vh;
+    right: 3vw;
+    padding: 5px 10px;
+    border-radius: 10px;
+    border: 1px solid rgba(192, 192, 192, .5);
+    background: rgba(255, 255, 255, .7);
+    font-family: "Muller", monospace;
+    font-size: 1.5vh;
+    z-index: 1;
+}
+
+
+/* Стили эмуляции консоли */
+
+#lesson-console {
+    height: calc(95% - 10px) ;
+    padding: 20px;
+    background: rgba(64, 64, 96, .92);
+    line-height: 1.3em;
+    font-size: 1.3em;
+    color: white;
+    user-select: none;
+    word-wrap: break-word;
+    z-index: 2;
+}
+
+#lesson-console code span {
+    color: rgba(0, 150, 255, .8);
+}
+
+
+/* Эмуляция каретки */
+
+#console-caret {
+    animation: fade-in-out 1s infinite;
+    transition: opacity 0.5s;
+}
+
+#lesson-console #console-input {
+    color: bisque;
+    outline: none;
+}
+
+#lesson-console #console-input:focus + #console-caret {
+    animation: none;
+    opacity: 0;
+}
+
+
+/* Анимация каретки */
+
+@keyframes fade-in-out {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+
+/* Меню урока */
+
+#lesson-menu {
+    position: absolute;
+    top: 0;
+    left: 10%;
+    height: 13vh;
+    width: 80%;
+    border: 1px solid rgba(0, 0, 0, .1);
+    border-top: none;
+    border-radius: 0 0 25px 25px;
+    background: rgba(235, 235, 255, .9);
+    transition: .5s;
+    opacity: 0;
+    z-index: 11;
+}
+
+#lesson-menu:hover {
+    opacity: 1;
+}
+
+
+/* Надписи "Было" и "Стало" */
+
+#lesson-menu > span {
+    position: absolute;
+    bottom: 1.5vh;
+    font-family: "Menlo", "Monaco", "Consolas", "Courier New", monospace;
+    font-size: 3vh;
+    color: rgba(150, 150, 255, .7);
+}
+
+#lesson-menu > span:first-of-type {
+    left: 5%;
+    color: rgba(250, 130, 130, .7);
+    text-shadow:
+        0 0 1px black,
+        -1px -1px 1px rgba(192, 0, 0, .5);
+}
+
+#lesson-menu > span:last-of-type {
+    right: 5%;
+    text-shadow:
+        1px 1px 2px black,
+        0 0 2px white,
+        1px 1px 1px lime;
+}
+
+
+/* Кнопки в меню урока */
+
+#lesson-menu > button {
+    position: absolute;
+    top: 2vh;
+    height: 5vh;
+    width: 5vh;
+    border: none;
+    background: none;
+    transition: .5s;
+    outline: none;
+    cursor: pointer;
+}
+
+#lesson-menu > button:first-of-type,
+#lesson-menu > button:nth-of-type(2),
+#lesson-menu > button:nth-of-type(3) {
+    width: 19%;
+    border: 0.25vh solid rgba(0, 0, 0, .1);
+    background: rgba(235, 215, 230, .6);
+    border-radius: 15px;
+    box-shadow: inset 13px 13px 20px rgba(170, 180, 250, .3);
+    font-family: "Pacifico", cursive;
+    font-size: 2vh;
+    color: rgba(140, 100, 180, .8);
+    text-shadow: 0 0 1px grey;
+}
+
+#lesson-menu > button:first-of-type {
+    left: 4%;
+}
+
+#lesson-menu > button:nth-of-type(2) {
+    left: 28%;
+}
+
+#lesson-menu > button:nth-of-type(3) {
+    left: 52%;
+    background: rgba(215, 235, 230, .6);
+}
+
+#lesson-menu > button:nth-of-type(4) {
+    left: 74%;
+}
+
+#lesson-menu > button:nth-of-type(5) {
+    left: 82%;
+}
+
+#lesson-menu > button:last-of-type {
+    left: 90%;
+}
+
+#lesson-menu > button:first-of-type:hover,
+#lesson-menu > button:nth-of-type(2):hover {
+    background: rgb(230, 150, 150);
+    color: ivory;
+}
+
+#lesson-menu > button:first-of-type:active,
+#lesson-menu > button:nth-of-type(2):active {
+    background: rgb(255, 100, 100);
+}
+
+#lesson-menu > button:nth-of-type(3):hover {
+    background: rgb(200, 230, 200);
+    color: ivory;
+}
+
+#lesson-menu > button:nth-of-type(3):active {
+    background: rgb(200, 255, 200);
+}
+
+
+/* Изображения в кнопках меню урока */
+
+#lesson-menu > button > img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 5vh;
+    margin: 0;
+    padding: 0;
+}
+
+#lesson-menu > button > img:hover {
+    transform: scale(1.2);
+}
+
+#lesson-menu > button > img:active {
+    transform: scale(1);
+}
+
+
+/* Название урока в меню */
+
+p.what-is-now {
+    position: relative;
+    margin: 9vh 0 0 20%;
+    width: 60%;
+    text-align: center;
+    font-family: "Gilroy", "Monaco", "Consolas", "Courier New", monospace;
+    font-weight: bold;
+    font-size: 2.5vh;
+    color: rgba(64, 64, 64, 0.9);
+    text-shadow: 0 0 1px white;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+/*
+    Задачи урока
+*/
+
+#lesson-tasks {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 50vh;
+    width: 50%;
+    border: 1px solid rgba(64, 192, 64, .5);
+    background:
+        rgba(255, 255, 255, .95)
+        linear-gradient(to left top, rgba(164, 242, 194, .1), rgba(194, 255, 214, .5));
+    overflow: auto;
+    transition: all .75s, z-index 0.1s;
+    opacity: 1;
+    z-index: 4;
+}
+
+#lesson-tasks.down-position {
+    top: calc(50vh - 2px);
+}
+
+#lesson-tasks.down-position > button {
+    bottom: 2.5vh;
+}
+
+#lesson-tasks.pin-power {
+    z-index: 12;
+}
+
+#lesson-tasks.failed-test {
+    background-color: rgba(255, 220, 220, .95);
+}
+
+#lesson-tasks.passed-test {
+    background-color: rgba(220, 255, 220, .95);
+}
+
+#lesson-engine #view-after .failed-test-item {
+    border-color: rgba(192, 0, 0, .25);
+    background-color: rgba(192, 0, 0, .25);
+    box-shadow: inset 0 0 50px rgba(192, 0, 0, .75);
+}
+
+#lesson-tasks > img {
+    position: fixed;
+    bottom: 52vh;
+    left: calc(50% - 7.5vh);
+    height: 5vh;
+    opacity: 0.8;
+    cursor: pointer;
+    border: 2px solid rgba(164, 164, 164, .7);
+    border-radius: 5px;
+    background-color: rgba(192, 192, 192, .5);
+    transition: all .75s, z-index 0.1s;
+}
+
+#lesson-tasks > img:hover {
+    transform: scale(1.2);
+}
+
+#lesson-tasks > img:active {
+    transform: scale(1);
+}
+
+#lesson-tasks > img:last-of-type {
+    left: calc(50% - 15vh);
+}
+
+#lesson-tasks.down-position > img:last-of-type {
+    bottom: 2vh;
+}
+
+
+/* Надписи поздравления с завершением всех заданий урока */
+
+#lesson-tasks::before,
+#lesson-tasks::after {
+    display: none;
+    position: fixed;
+    width: 50%;
+    text-align: center;
+    font-family: "Pacifico", cursive;
+    font-size: 5vh;
+    color: rgba(255, 230, 0, .9);
+    text-shadow:
+        1px 1px 2px black,
+        0px 0px 2px white;
+    opacity: .8;
+}
+
+#lesson-tasks::before {
+    content: "Молодец!";
+    top: 7.5vh;
+}
+
+#lesson-tasks::after {
+    content: "Все задания выполнены!";
+    top: 27.5vh;
+}
+
+#lesson-tasks.all-done::before,
+#lesson-tasks.all-done::after {
+    display: block;
+}
+
+
+/* Пункты заданий */
+
+#lesson-tasks ul {
+    margin: 0;
+    padding: 2vh 0 1vh 5vh;
+}
+
+#lesson-tasks li {
+    margin-right: 2vh;
+    padding-bottom: 2.5vh;
+    padding-top: 2.5vh;
+    border-bottom: 1px solid green;
+    font-family: monospace;
+    font-size: 3vh;
+    color: #888;
+    text-shadow: 0 0 2px white;
+    transition: 1s;
+    user-select: text;
+    word-wrap: break-word;
+}
+
+#lesson-tasks li:last-of-type {
+    margin-bottom: 8vh;
+}
+
+#lesson-tasks code, #lesson-theory code {
+    border-bottom: 2px solid currentColor;
+    font-family: "Menlo", "Monaco", "Consolas", "Courier New", monospace;
+}
+
+#lesson-tasks li code {
+    color: #111;
+    text-shadow: 0 0 1px dodgerblue;
+    transition: 1.5s;
+}
+
+#lesson-tasks li code.keyclass {
+    text-shadow: 0 0 1px lime;
+}
+
+#lesson-tasks li code.keyvalue {
+    border-bottom: none;
+}
+
+#lesson-tasks li code.keyword {
+    text-shadow: 0 0 2px crimson;
+    border-bottom: none;
+}
+
+#lesson-tasks li code.keytext, #lesson-console span.keytext {
+    font-family: "Menlo", "Monaco", "Consolas", "Courier New", monospace;
+    color: #111;
+    text-shadow: 0 0 1px slategrey;
+    border-bottom: none;
+}
+
+#lesson-tasks li button {
+    left: 52vw;
+}
+
+.no-wrap {
+    word-spacing: nowrap;
+}
+
+
+/* Выполненные задания */
+
+#lesson-tasks li.done {
+    color: rgba(64, 192, 64, .5);
+}
+
+#lesson-tasks li.done li {
+    color: rgba(64, 192, 64, .5);
+}
+
+#lesson-tasks li.done code {
+    text-shadow: none;
+    color: rgba(64, 132, 64, .5);
+}
+
+#lesson-tasks .test-header {
+    text-align: center;
+    color: dodgerblue;
+    text-shadow: 0 0 3px rgba(255, 230, 0, .9);
+}
+
+#lesson-tasks .test-container {
+    padding: 10px 20px;
+    border: 1px solid lightsteelblue;
+    border-radius: 10px;
+    background: rgba(245, 235, 235, .3);
+    text-align: justify;
+}
+
+#lesson-tasks .task-press-button {
+    padding: 10px 15px;
+    border: 1.5px solid rgba(255, 230, 0, .5);
+    border-radius: 10px;
+    box-shadow: inset 0 0 10px rgba(255, 230, 0, .15),
+                0 2px 4px rgba(0,0,0,.25);
+    background-color: rgba(255, 230, 0, .05);
+    text-align: center;
+}
+
+#lesson-tasks .test-list {
+    list-style: none;
+    padding-top: 0vh;
+    padding-left: 2vh;
+}
+
+
+/* Кнопка вызова теории урока */
+
+#lesson-tasks button {
+    position: fixed;
+    bottom: 52vh;
+    left: 2vh;
+    padding: 1vh;
+    border: 1px solid rgba(64, 192, 64, .5);
+    border-radius: 5px;
+    background: rgba(164, 255, 194, .5);
+    font-weight: bold;
+    font-size: 2vh;
+    color: lavender;
+    text-shadow: 0 0 2px black;
+    outline: none;
+    transition: all 1s, background-color 0s, color 0s;
+    cursor: pointer;
+}
+
+#lesson-tasks button:hover {
+    background: rgba(94, 232, 94, .3);
+}
+
+#lesson-tasks button:active {
+    background: rgba(114, 245, 114, .75);
+    color: rgba(220, 220, 240);
+}
+
+
+/*
+    Редактор урока
+*/
+
+#lesson-editor {
+    display: flex;
+    position: absolute;
+    top: 50%;
+    height: 50%;
+    width: 100%;
+    background: lavender;
+    overflow: visible;
+    z-index: 10;
+}
+
+
+/* Кнопка увеличения масштаба окон отображения (лупа) */
+
+#lesson-editor > img:first-of-type {
+    position: fixed;
+    top: 40vh;
+    right: 5vh;
+    height: 5vh;
+    margin: 0;
+    padding: 0;
+    opacity: .25;
+    cursor: pointer;
+}
+
+#lesson-editor > img:first-of-type:hover {
+    transform: scale(1.2);
+}
+
+#lesson-editor > img:first-of-type:active {
+    transform: scale(1);
+}
+
+#lesson-editor > div {
+    position: relative;
+    flex-grow: 1;
+    min-width: 200px;
+    width: 33%;
+    max-width: 100%;
+    padding: .25vh;
+    background: lavender;
+    border-top: 1px solid rgba(0, 0, 0, .35);
+    resize: horizontal;
+}
+
+#lesson-editor > div:not(:first-of-type) {
+    border-left: 1px solid rgba(0, 0, 0, .35);
+}
+
+.drag-elem {
+    position: absolute;
+    left: -4px;
+    top: 0;
+    bottom: 0;
+    width: 8px;
+    cursor: w-resize;
+}
+
+#lesson-editor > div > textarea {
+    position: relative;
+    width: calc(100% - 2vh);
+    border: none;
+    outline: none;
+    resize: none;
+}
+
+#lesson-editor > div > textarea,
+#lesson-editor > div > .CodeMirror {
+    height: 100%;
+    font-size: 2vh;
+    line-height: 3vh;
+}
+
+#lesson-editor > div > textarea:read-only,
+#lesson-editor div.read-only-helper .CodeMirror-scrollbar-filler,
+#lesson-editor div.read-only-helper .CodeMirror-gutter-filler,
+#lesson-editor div.read-only-helper .CodeMirror-gutters,
+#lesson-editor div.read-only-helper .CodeMirror {
+    background: lavender;
+}
+
+#lesson-editor > div.big > textarea,
+#lesson-editor > div.big > .CodeMirror {
+    font-size: 3.5vh;
+    line-height: 4.5vh;
+}
+
+#lesson-editor div.big .CodeMirror-gutters {
+  padding-right: 2vh;
+}
+
+#lesson-editor div.big .CodeMirror pre {
+  padding-left: 2vh;
+}
+
+#lesson-editor > div.biggest > textarea,
+#lesson-editor > div.biggest > .CodeMirror {
+    font-size: 5vh;
+    line-height: 7vh;
+}
+
+#lesson-editor div.biggest .CodeMirror-gutters {
+  padding-right: 3vh;
+}
+
+#lesson-editor div.biggest .CodeMirror pre {
+  padding-left: 3vh;
+}
+
+#lesson-editor >div.full-size {
+    top: -100%;
+    height: calc(200% - 2vh);
+}
+
+#lesson-editor > div > img {
+    position: absolute;
+    right: 2.5vh;
+    height: 5vh;
+    opacity: 0.8;
+    cursor: pointer;
+    z-index: 10;
+}
+
+#lesson-editor > div > img:hover {
+    transform: scale(1.2);
+}
+
+#lesson-editor > div > img:active {
+    transform: scale(1);
+}
+
+#lesson-editor > div > img:first-of-type {
+    top: 2vh;
+}
+
+#lesson-editor > div > img:nth-of-type(2) {
+    top: 10vh;
+}
+
+#lesson-editor > div > img:nth-of-type(3) {
+    top: 18vh;
+}
+
+#lesson-editor > div > img:nth-of-type(4) {
+    top: 26vh;
+}
+
+
+/*
+    Теория урока
+*/
+
+#lesson-theory {
+    position: absolute;
+    top: 2.5vh;
+    left: 2.5%;
+    height: 82.5vh;
+    width: 90%;
+    padding: 20px;
+    padding-bottom: 10vh;
+    background: white;
+    border: 2px solid rgba(0, 0, 0, .2);
+    border-radius: 20px;
+    font-family: "Muller","Arial",sans-serif;
+    font-size: 20px;
+    line-height: 1.375em;
+    overflow-y: scroll;
+    z-index: 15;
+}
+
+#lesson-theory .theory-hint {
+    background: rgba(230, 230, 230, .75);
+    padding: 15px;
+    border-radius: 20px;
+}
+
+#lesson-theory .theory-hint * {
+    opacity: 0;
+}
+
+#lesson-theory .theory-hint:hover * {
+    opacity: 1;
+}
+
+#lesson-theory .closeTheory {
+    position: fixed;
+    bottom: 5vh;
+    left: 40%;
+    padding: 1.5vh 2.5vh;
+    background: rgba(0, 192, 0, .7);
+    border: 1px solid rgba(0, 0, 0, .3);
+    border-radius: 15px;
+    box-shadow: inset 13px 13px 20px rgba(170, 180, 250, .3);
+    font-weight: bold;
+    font-size: 3vh;
+    color: rgba(70, 40, 120, .5);
+    text-shadow: 0 0 1px black;
+    transition: 0.7s;
+    opacity: .7;
+    outline: none;
+    cursor: pointer;
+    z-index: 16;
+}
+
+#lesson-theory .closeTheory:hover {
+    background: rgb(200, 230, 200);
+    opacity: .85;
+}
+
+#lesson-theory .closeTheory:active {
+    background: rgba(150, 255, 150, .7);
+    opacity: 1;
+}
+
+#lesson-theory h1 {
+    padding-right: 35px;
+}
+
+#lesson-theory b {
+    font-weight: 700;
+}
+
+/*
+    Загрузчик
+*/
+#loader {
+    width:100%; 
+    height:100%;
+    top: 0;
+    margin:0;
+    padding:0;
+    position:fixed;
+    background:rgba(0,0,0,.25);
+    z-index: 20;
+}
+
+.loader__loader {
+    position:absolute;
+    width:300px;
+    height:100px;
+    left:50%;
+    top:50%;
+    margin-left:-150px;
+    margin-top:-50px;
+    border-radius:20px;
+}
+  
+.loader__ball {
+    position:absolute;
+    width:0;
+    height:100%;
+    left:-15px;
+    bottom:0;
+    background:#4a9;
+    opacity:0;
+    -webkit-animation:moveBall 2.8s infinite linear;
+    animation:moveBall 2.8s infinite linear;
+}
+    
+.loader__one {
+    -webkit-animation-delay: 0s;
+    animation-delay: 0s;
+}
+.loader__two {
+    -webkit-animation-delay: 0.2s;
+     animation-delay: 0.2s;
+}
+.loader__three {
+    -webkit-animation-delay: 0.4s;
+    animation-delay: 0.4s;
+}
+.loader__four {
+    -webkit-animation-delay: 0.6s;
+    animation-delay: 0.6s;
+}
+.loader__five {
+    -webkit-animation-delay: 0.8s;
+    animation-delay: 0.8s;
+}
+.loader__six {
+    -webkit-animation-delay: 1s;
+    animation-delay: 1s;
+}
+
+.loader__inner {
+    height:30px;
+    width:30px;
+    position:absolute;
+    background:#ccc;
+    bottom:0;
+    left:0;
+    margin-left:-15px;
+    border-radius:100%;
+}
+
+.loader__center {
+    left:50%;
+    top:50%;
+    background:none;
+    -webkit-animation:centerBall 2.8s infinite cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    animation:centerBall 2.8s infinite cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+
+.loader__center .loader__inner {
+    top:-15px;
+}
+
+@keyframes centerBall {
+  0%, 25%, 100% {
+    opacity:1;
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  } 75% {
+    opacity:0;
+  }
+}
+
+@keyframes moveBall {
+  0% {
+    left:-10%
+    opacity:0;
+    -webkit-animation-timing-function: cubic-bezier(0.55, 0.085, 0.68, 0.53);
+    animation-timing-function: cubic-bezier(0.55, 0.085, 0.68, 0.53);
+  } 10% {
+    opacity:0;
+  } 28.7% {
+    transform: rotate(-180deg);
+    left:50%;
+    opacity:1;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function:linear;
+  } 71.3% {
+    transform: rotate(180deg);
+    left:50%;
+    opacity:1;
+    -webkit-animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  } 90% {
+    opacity:0;
+  }100% {
+    left:110%;
+    transform: rotate(deg);
+    opacity:0;
+  }
+}
+
+/*
+    Анимации для заданий.
+*/
+
+@-webkit-keyframes grow {
+  from {
+    height: 50px;
+  }
+  to {
+    height: 280px;
+  }
+}
+@keyframes grow {
+  from {
+    height: 50px;
+  }
+  to {
+    height: 280px;
+  }
+}
+
+@-webkit-keyframes flower {
+  from {
+    -webkit-transform: scale(0.4);
+            transform: scale(0.4);
+  }
+  to {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+@keyframes flower {
+  from {
+    -webkit-transform: scale(0.4);
+            transform: scale(0.4);
+  }
+  to {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+@-webkit-keyframes leaf {
+  from {
+    width: 0;
+       height: 0;
+  }
+  to {
+    width: 40px;
+    height: 20px;
+  }
+}
+@keyframes leaf {
+     from {
+    width: 0;
+     height: 0;
+  }
+  to {
+    width: 40px;
+    height: 20px;
+  }
+}
