@@ -239,7 +239,7 @@ const Academy = new Vue({
 
             let hide = this.hiddenCSS ? this.hiddenCSS.split('}') : "";
             let rules = this.currentCSS ? this.currentCSS.split('}') : "";
-            let [ css, css2, i, index, selector ] = [ "", "", 0, 0, "" ];
+            let [ css, css2, i, index, selector ] = [ [], [], 0, 0, "" ];
 
             for ( ; i < hide.length; i++ ) {
                 // Перебор неизменяемых CSS-правил для правки селекторов.
@@ -250,10 +250,10 @@ const Academy = new Vue({
                 if ( ~index && hide[i].indexOf(':') ) {
                     selector = Academy.replaceID( hide[i].slice(0, index) ).replace(/,/gi, ', [id^="view-"] ');
                     if ( selector.replace(/ /gi, '').indexOf('@') == 0 )
-                        css += selector + hide[i].slice(index) + "} ";
+                        css.push(selector + hide[i].slice(index) + "} ");
                     else
-                        css += "#view-before " + selector + hide[i].slice(index) + "} ";
-                        css += "#view-after " + selector + hide[i].slice(index) + "} ";
+                        css.push("#view-before " + selector + hide[i].slice(index) + "} ");
+                        css.push("#view-after " + selector + hide[i].slice(index) + "} ");
                 }
             }
 
@@ -266,17 +266,17 @@ const Academy = new Vue({
                 if ( ~index && ~rules[i].indexOf(':') ) {
                     selector = Academy.replaceID( rules[i].slice(0, index) ).replace(/,/gi, ', [id^="view-"] ');
                     if ( selector.replace(/ /gi, '').indexOf('@') == 0 )
-                        css += selector + rules[i].slice(index) + "} ";
+                        css.push(selector + rules[i].slice(index) + "} ");
                     else {
-                        css += "#view-before " + selector + rules[i].slice(index) + "} ";
-                        css2 += "#view-after " + selector + rules[i].slice(index) + "} ";
+                        css.push("#view-before " + selector + rules[i].slice(index) + "} ");
+                        css2.push("#view-after " + selector + rules[i].slice(index) + "} ");
                     }
                 }
             }
 
             // Запись CSS в выделенные элементы.
-            document.head.getElementsByTagName('style')[0].innerHTML = css;
-            document.head.getElementsByTagName('style')[1].innerHTML = css2;
+            document.head.getElementsByTagName('style')[0].innerHTML = css.join("");
+            document.head.getElementsByTagName('style')[1].innerHTML = css2.join("");
         },
 
 
@@ -1741,7 +1741,7 @@ const Academy = new Vue({
                     selector  - селектор текущего CSS-правила.
             */
 
-            let css = "";
+            let css = [];
             let rules = this.CSS;
             if (!rules)
                 return
@@ -1760,20 +1760,20 @@ const Academy = new Vue({
                 if ( ~rules[i].indexOf('{') && ~rules[i].indexOf(':') ) {
                     let selector = this.replaceID(rules[i].slice(0, rules[i].indexOf('{')));
                     if ( selector.replace(/ /gi, '').indexOf('@') == 0 )
-                        css += selector + rules[i].slice(index) + "} ";
+                        css.push(selector + rules[i].slice(index) + "} ");
                     else {
                         selector = selector.replace(/,/gi, ', #view-after ');
 
-                        css += "#view-after " + selector +
-                               rules[i].slice(rules[i].indexOf('{')) + "} ";
+                        css.push("#view-after " + selector +
+                               rules[i].slice(rules[i].indexOf('{')) + "} ");
                     }
                 }
             }
 
             if ( style.styleSheet )
-                style.styleSheet.cssText = css;
+                style.styleSheet.cssText = css.join("");
             else
-                style.innerHTML = css;
+                style.innerHTML = css.join("");
       },
 
 
