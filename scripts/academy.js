@@ -2202,9 +2202,16 @@ var printLog = (text="console.log") => {
 
 
 // Вспомогательные функции для уроков.
+// пользовательский css код
 var getC = (a) => Academy.CSS? a? Academy.CSS.getValue() :Academy.CSS.getValue().replace(/ |\n|\t/gi,'') :"";
+
+// пользовательский html код
 var getH = (a) => Academy.HTML? a? Academy.HTML.getValue() :Academy.HTML.getValue().replace(/ |\n|\t/gi,'') :"";
+
+// пользовательский js код
 var getJ = () => Academy.JS? Academy.JS.getValue().replace(/ |\n|\t/gi,'') :"";
+
+// парсинг функций
 var getF = (f)=> typeof f=='function'? f.toString().replace(/ |\n|\t/gi,''):"";
 
 var setT = () => {
